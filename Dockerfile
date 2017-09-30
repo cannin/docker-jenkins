@@ -17,7 +17,7 @@ RUN apt-get update
 RUN apt-get -y install jenkins
 
 # Install build commands
-RUN apt-get -y install unzip zip
+RUN apt-get -y install unzip zip jq
 
 ##### JENKINS SETUP
 ENV JENKINS_UC https://updates.jenkins-ci.org
