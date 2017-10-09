@@ -10,6 +10,13 @@ RUN apt-get update
 # Install basic commands
 RUN apt-get -y install links nano wget curl git mercurial htop
 
+# Install Java
+RUN add-apt-repository -y ppa:openjdk-r/ppa
+
+RUN apt-get -y update && apt-get -y upgrade
+RUN apt-get -y install openjdk-8-jdk
+
+## Install Jenkins
 RUN wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -
 RUN sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
 
