@@ -26,6 +26,9 @@ RUN apt-get -y install jenkins
 # Install build commands
 RUN apt-get -y install unzip zip jq
 
+# Needed for Docker-based pipelines
+RUN apt-get install -y libltdl7 && rm -rf /var/lib/apt/lists/*
+
 ##### JENKINS SETUP
 ENV JENKINS_UC https://updates.jenkins-ci.org
 ENV JENKINS_REF /usr/share/jenkins/ref
@@ -64,4 +67,5 @@ EXPOSE 8080
 
 COPY jenkins.sh /usr/local/bin/jenkins.sh
 RUN chmod u+x /usr/local/bin/jenkins.sh
+
 CMD ["/usr/local/bin/jenkins.sh"]
